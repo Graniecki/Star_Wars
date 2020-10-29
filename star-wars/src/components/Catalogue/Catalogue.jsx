@@ -1,27 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Catalogue.css';
 
 import { PlanetsCards } from '../PlanetsCards';
 
 export const Catalogue = () => {
   const URL = 'https://swapi.dev/api/planets/';
-  const planets = [];
-
-  const getPlanetInfo = () => {
-    fetch(URL)
-      .then(response => response.json())
-      .then(array => {
-        planets.push(...array.results);
-      });
-  };
+  const [planets, setPlanets] = useState([]);
 
   useEffect(() => {
-    getPlanetInfo();
+    fetch(URL)
+      .then(response => response.json())
+      .then(array => setPlanets(array.results));
   }, []);
 
   return (
     <div className="catalogue">
-      <PlanetsCards />
+      <PlanetsCards planets={planets} />
     </div>
   );
 };
