@@ -3,6 +3,8 @@ import './PlanetsCards.css';
 
 export const PlanetsCards = () => {
   return (
-    
+    <div className="card">
+      
+    </div>
   );
 };
