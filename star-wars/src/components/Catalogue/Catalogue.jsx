@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Catalogue.css';
 
 import { PlanetsCards } from '../PlanetsCards';
+import { PlanetsContext } from '../PlanetsContext';
 
 export const Catalogue = () => {
   const URL = 'https://swapi.dev/api/planets/';
@@ -14,8 +15,10 @@ export const Catalogue = () => {
   }, []);
 
   return (
-    <div className="catalogue">
-      <PlanetsCards planets={planets} />
-    </div>
+    <PlanetsContext.Provider value={planets}>
+      <div className="catalogue">
+        <PlanetsCards />
+      </div>
+    </PlanetsContext.Provider>
   );
 };

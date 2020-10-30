@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './PlanetsCards.css';
 
 import { PlanetCard } from '../PlanetCard';
+import { PlanetsContext } from '../PlanetsContext';
 
-export const PlanetsCards = ({ planets }) => {
+export const PlanetsCards = () => {
+  const planets = useContext(PlanetsContext);
+
   return (
     <div className="planets-cards">
       {planets.map((planet, index) => (
