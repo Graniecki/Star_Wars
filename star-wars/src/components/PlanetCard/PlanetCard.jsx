@@ -1,10 +1,14 @@
 import React from 'react';
 import './PlanetCard.css';
 
-export const PlanetCard = ({ planet }) => {
+import { Link } from 'react-router-dom';
+
+export const PlanetCard = ({ planet, index }) => {
   return (
     <div className="card">
-      <h2>{planet.name}</h2>
+      <h2>
+        <Link to={`/planet/${index + 1}`} >{planet.name}</Link>
+      </h2>
       <p>{`Climate - ${planet.climate}`}</p>
       <p>{`Population - ${planet.population}`}</p>
     </div>
