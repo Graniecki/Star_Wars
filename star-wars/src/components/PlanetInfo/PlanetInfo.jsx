@@ -18,7 +18,12 @@ export const PlanetInfo = ({ match }) => {
       .then(response => response.json())
       .then(array => {
         setPlanet(array);
-        setResident(array.residents);
+        setResident(
+          //changing basic http on https protocol
+          array.residents.map(resident => (
+            resident.replace('http', 'https')
+          ))
+        );
       });
   }, [planetId]);
 

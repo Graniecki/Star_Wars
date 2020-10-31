@@ -8,7 +8,7 @@ import { PlanetInfo } from '../PlanetInfo';
 
 
 export const Catalogue = () => {
-  const URL = 'http://swapi.dev/api/planets/';
+  const URL = 'https://swapi.dev/api/planets/';
   const [planets, setPlanets] = useState([]);
 
   // getting information from server
