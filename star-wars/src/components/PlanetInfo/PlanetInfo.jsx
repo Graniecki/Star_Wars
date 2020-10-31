@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './PlanetInfo.css';
 
 import { ResidentsInfo } from '../ResidentsInfo';
+import { PagesNavigation } from '../PagesNavigation';
 
 export const PlanetInfo = ({ match }) => {
   const URL = 'https://swapi.dev/api/planets/';
@@ -19,15 +20,23 @@ export const PlanetInfo = ({ match }) => {
   }, [planetId]);
 
   return (
-    <div className="planet-info">
-      <p>{`Name - ${planet.name}`}</p>
-      <p>{`Rotation period - ${planet["rotation_period"]}`}</p>
-      <p>{`Diameter - ${planet.diameter}`}</p>
-      <p>{`Climate - ${planet.climate}`}</p>
-      <p>{`Gravity - ${planet.gravity}`}</p>
-      <p>{`Terrain - ${planet.terrain}`}</p>
-      <p>{`Population - ${planet.population}`}</p>
-      <ResidentsInfo residents={residents} />
-    </div>
+    <>
+      <div className="planet-info">
+        <p>{`Name - ${planet.name}`}</p>
+        <p>{`Rotation period - ${planet["rotation_period"]}`}</p>
+        <p>{`Diameter - ${planet.diameter}`}</p>
+        <p>{`Climate - ${planet.climate}`}</p>
+        <p>{`Gravity - ${planet.gravity}`}</p>
+        <p>{`Terrain - ${planet.terrain}`}</p>
+        <p>
+          {`Population: ${planet.population !== 'unknown'
+            ? planet.population
+            : 'Information about the population on this planet is unknown'
+          }`}
+        </p>
+        <ResidentsInfo residents={residents} />
+      </div>
+      <PagesNavigation planetId={planetId} />
+    </>
   );
 };
