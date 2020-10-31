@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import { PlanetsCards } from '../PlanetsCards';
 import { PlanetInfo } from '../PlanetInfo';
 
+
 export const Catalogue = () => {
   const URL = 'https://swapi.dev/api/planets/';
   const [planets, setPlanets] = useState([]);
