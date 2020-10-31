@@ -11,6 +11,7 @@ export const Catalogue = () => {
   const URL = 'https://swapi.dev/api/planets/';
   const [planets, setPlanets] = useState([]);
 
+  // getting information from server
   useEffect(() => {
     fetch(URL)
       .then(response => response.json())
@@ -20,6 +21,9 @@ export const Catalogue = () => {
   return (
     <div className="catalogue">
       <PlanetsCards planets={planets} />
+
+      {/*adding path to universal component where will be
+      display information about selected planet*/}
       <Switch>
         <Route exact path="/planet/:planetId" component={PlanetInfo} />
       </Switch>
