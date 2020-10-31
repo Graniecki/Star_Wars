@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './PlanetsCards.css';
 
 import { PlanetCard } from '../PlanetCard';
-import { PlanetsContext } from '../PlanetsContext';
 
-export const PlanetsCards = () => {
-  const planets = useContext(PlanetsContext);
+export const PlanetsCards = ({ planets }) => {
 
   return (
     <div className="planets-cards">

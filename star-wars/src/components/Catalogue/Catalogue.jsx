@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Catalogue.css';
 
+import { Switch, Route } from 'react-router-dom';
+
 import { PlanetsCards } from '../PlanetsCards';
-import { PlanetsContext } from '../PlanetsContext';
+import { PlanetInfo } from '../PlanetInfo';
 
 export const Catalogue = () => {
   const URL = 'https://swapi.dev/api/planets/';
@@ -15,10 +17,11 @@ export const Catalogue = () => {
   }, []);
 
   return (
-    <PlanetsContext.Provider value={planets}>
-      <div className="catalogue">
-        <PlanetsCards />
-      </div>
-    </PlanetsContext.Provider>
+    <div className="catalogue">
+      <PlanetsCards planets={planets} />
+      <Switch>
+        <Route exact path="/planet/:planetId" component={PlanetInfo} />
+      </Switch>
+    </div>
   );
 };
