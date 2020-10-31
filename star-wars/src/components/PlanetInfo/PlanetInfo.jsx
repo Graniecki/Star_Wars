@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import './PlanetInfo.css';
 
+import { ResidentsInfo } from '../ResidentsInfo';
+
 export const PlanetInfo = ({ match }) => {
   const URL = 'https://swapi.dev/api/planets/';
   const { planetId } = match.params;
-
   const [planet, setPlanet] = useState([]);
-  // const [residents, setResidents] = useState([]);
+  const [residents, setResident] = useState([]);
 
   useEffect(() => {
     fetch(`${URL}${planetId}/`)
       .then(response => response.json())
-      .then(array => setPlanet(array));
+      .then(array => {
+        setPlanet(array);
+        setResident(array.residents);
+      });
   }, [planetId]);
 
   return (
@@ -23,9 +27,7 @@ export const PlanetInfo = ({ match }) => {
       <p>{`Gravity - ${planet.gravity}`}</p>
       <p>{`Terrain - ${planet.terrain}`}</p>
       <p>{`Population - ${planet.population}`}</p>
-      <p>
-        {`Residents - `}
-      </p>
+      <ResidentsInfo residents={residents} />
     </div>
   );
 };
